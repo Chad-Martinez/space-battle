@@ -32,6 +32,11 @@ body {
   padding: 20px;
 }
 
+.title {
+  color: white;
+  font-size: 3rem;
+}
+
 #game-area {
   display: flex;
   height: 100vh;
@@ -71,6 +76,10 @@ body {
   object-fit: contain;
 }
 
+#captain-bubble {
+  opacity: 0;
+}
+
 #captain-ship-img {
   height: 150px;
   object-fit: contain;
@@ -79,10 +88,6 @@ body {
 
 #captain-ship-laser {
   transform: translate(130px, 146px) rotateZ(3deg);
-}
-
-#captain-bubble {
-  opacity: 0;
 }
 
 #omicron-bubble {
@@ -104,15 +109,41 @@ body {
   transform: translate(440px, 150px) rotateZ(-5deg);
 }
 
-.title {
-  color: white;
-  font-size: 3rem;
+#captain-explosions, #omicron-explosions {
+  position: absolute;
+  /* z-index: -1; */
 }
 
-h2 {
-  font-size: 1.25rem;
-  margin: 1rem 0.5rem;
+#omicron-explosions {
+  transform: translate(400px, 0px);
 }
+
+.explosions {
+  transform: translate(-500px, 300px);
+}
+
+.explosion {
+  position: absolute;
+  opacity: 0;
+}
+
+.explosion.small {
+  width: 120px;
+  transform: translate(50px, 0px)
+}
+
+.explosion.medium {
+  width: 220px;
+  transform: translate(150px, 10px)
+  
+}
+
+.explosion.large {
+  width: 320px;
+  transform: translate(-40px, 20px)
+}
+
+/* .small */
 
 .controls {
   display: flex;

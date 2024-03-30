@@ -48,7 +48,7 @@
   }
   to {
     opacity: 1;
-    transform: translate(-585px, 148px)
+    transform: translate(-585px, 148px);
   }
 }
 
@@ -63,5 +63,29 @@
   to {
     opacity: 1;
     transform: translate(-560px, -125px);
+  }
+}
+
+.exploded {
+  animation: animate-explosions .5s ease-out backwards;
+}
+/* 
+.exploded-1 {
+  animation: animate-explosions .5s ease-out 250ms backwards;
+}
+
+.exploded-2 {
+  animation: animate-explosions .5s ease-out 500ms backwards;
+} */
+
+@keyframes animate-explosions {
+  from {
+    opacity: 1;
+    transform: scale(0%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%)
+     /* transform: translate(150px, 10px) */
   }
 }
