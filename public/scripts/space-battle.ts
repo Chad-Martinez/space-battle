@@ -141,9 +141,37 @@ const speak = (element: HTMLElement, dialog: string): void => {
 const omicronFleet: Array<Ship> = alienShipFactory(alienCount);
 
 const fireLasers = (player: HTMLDivElement, hit: string): void => {
-  const ship = player.children[1].lastElementChild as HTMLImageElement;
-  ship.classList.add(`${hit}`);
-  setTimeout(() => ship.classList.remove(`${hit}`), 600);
+  const removeExplosions = (e) => {
+    const explosion = e.target as HTMLImageElement;
+    explosion.classList.toggle('exploded');
+  };
+
+  let explosionsContainer = document.getElementById('captain-explosions');
+
+  explosionsContainer.addEventListener('animationend', removeExplosions);
+
+  const animateExplosions = (e) => {
+    let explosions = captain.querySelectorAll('.explosion');
+    if (player.id == 'captain') {
+      explosionsContainer = omicron.querySelector('#omicron-explosions');
+      explosions = omicron.querySelectorAll('.explosion');
+    }
+
+    explosions.forEach((explosion, i) => {
+      setTimeout(() => {
+        explosion.classList.toggle(`exploded`);
+      }, i * 250);
+    });
+  };
+
+  const shipLaser = player.querySelector(`#${player.id}-ship-laser`);
+  if (hit == 'hit') {
+    shipLaser.addEventListener('animationend', animateExplosions);
+  }
+
+  shipLaser.classList.add(`${hit}`);
+
+  setTimeout(() => shipLaser.classList.remove(`${hit}`), 600);
 };
 
 const gameFinish = (action: string): void => {
