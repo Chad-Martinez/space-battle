@@ -143,22 +143,21 @@ const omicronFleet: Array<Ship> = alienShipFactory(alienCount);
 const fireLasers = (player: HTMLDivElement, hit: string): void => {
   const removeExplosions = (e) => {
     const explosion = e.target as HTMLImageElement;
-    console.log('EXPLOSION ENTER ', explosion);
     explosion.classList.toggle('exploded');
   };
 
-  const explosionsContainer = document.getElementById(
-    `${player.id}-explosions`
-  );
+  let explosionsContainer = document.getElementById('captain-explosions');
+
   explosionsContainer.addEventListener('animationend', removeExplosions);
 
   const animateExplosions = (e) => {
-    console.log('ANIMATION FINISHED', e);
-
-    const explosions = player.querySelectorAll('.explosion');
+    let explosions = captain.querySelectorAll('.explosion');
+    if (player.id == 'captain') {
+      explosionsContainer = omicron.querySelector('#omicron-explosions');
+      explosions = omicron.querySelectorAll('.explosion');
+    }
 
     explosions.forEach((explosion, i) => {
-      console.log(explosion, i);
       setTimeout(() => {
         explosion.classList.toggle(`exploded`);
       }, i * 250);
@@ -171,7 +170,6 @@ const fireLasers = (player: HTMLDivElement, hit: string): void => {
   }
 
   shipLaser.classList.add(`${hit}`);
-  // if (hit == 'hit')
 
   setTimeout(() => shipLaser.classList.remove(`${hit}`), 600);
 };
