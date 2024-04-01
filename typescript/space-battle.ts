@@ -1,18 +1,37 @@
-type Ship = {
-  hull: number;
-  firepower: number;
-  accuracy: number;
-};
+import * as esbuild from 'esbuild';
+import Ship from './ship';
+import Captain from './captain';
+// type Ship = {
+//   hull: number;
+//   firepower: number;
+//   accuracy: number;
+// };
 
-const captainShip: Ship = {
-  hull: 20,
-  firepower: 4,
-  accuracy: 0.7,
+// const captainShip: Ship = {
+//   hull: 20,
+//   firepower: 4,
+//   accuracy: 0.7,
+// };
+
+const test = 'test';
+const captainShip = new Ship(20, 4, 0.7);
+const alienCount: number = 5;
+const alienShipFactory = (fleetCount: number) => {
+  const alienFleet = [];
+  for (let i = 0; i < fleetCount; i++) {
+    alienFleet.push(
+      new Ship(
+        Number(Math.floor(Math.random() * (7 - 5 + 1) + 5).toFixed(3)),
+        Math.floor(Math.random() * (4 - 2 + 1) + 2),
+        (Math.random() * (8 - 6 + 1) + 6) / 10
+      )
+    );
+  }
+  return alienFleet;
 };
 
 let captainName: string;
 let shipName: string;
-const alienCount: number = 5;
 
 const CAPTAIN_HIT_DIALOG: string = 'Yes! Direct Hit!';
 const CAPTAIN_MISS_DIALOG: string = 'Rats! We missed!';
@@ -67,6 +86,10 @@ const toggleBackdrop = (): void => {
   backdrop.classList.toggle('visible');
 };
 
+const captainClass = new Captain('app');
+captainClass.render();
+//
+
 const toggleCaptainModal = (): void =>
   selectCaptainModal.classList.remove('visible');
 
@@ -110,18 +133,6 @@ const selectShipHandler = (e: InputEvent): void => {
   setOmicronHull(omicronFleet[omicronFleet.length - 1].hull);
 };
 
-const alienShipFactory = (fleetCount: number): Array<Ship> => {
-  const alienFleet: Array<Ship> = [];
-  for (let i = 0; i < fleetCount; i++) {
-    alienFleet.push({
-      hull: Number(Math.floor(Math.random() * (7 - 5 + 1) + 5).toFixed(3)),
-      firepower: Math.floor(Math.random() * (4 - 2 + 1) + 2),
-      accuracy: (Math.random() * (8 - 6 + 1) + 6) / 10,
-    });
-  }
-  return alienFleet;
-};
-
 const isHit = (accuracy: number): boolean =>
   accuracy > Math.random() ? true : false;
 
@@ -138,7 +149,7 @@ const speak = (element: HTMLElement, dialog: string): void => {
   }, 2800);
 };
 
-const omicronFleet: Array<Ship> = alienShipFactory(alienCount);
+const omicronFleet = alienShipFactory(alienCount);
 
 const fireLasers = (player: HTMLDivElement, hit: string): void => {
   const removeExplosions = (e) => {
@@ -199,8 +210,8 @@ const gameFinish = (action: string): void => {
 };
 
 const subtractDamage = (
-  offense: Ship,
-  defense: Ship,
+  offense,
+  defense,
   defenseHull: HTMLProgressElement
 ): number => {
   defense.hull -= offense.firepower;
