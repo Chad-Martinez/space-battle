@@ -3,7 +3,6 @@
     "@types/node": "^20.11.30"
   },
   "devDependencies": {
-    "esbuild": "0.20.2",
     "typescript": "^5.4.3"
   },
   "scripts": {
