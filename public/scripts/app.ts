@@ -12,16 +12,19 @@ class App extends Component {
     this.captainModal = chooseCaptain;
   }
 
-  static handleChooseShip(selection: { id: string }) {
-    console.log('SHIP ', selection);
+  static handleChooseShip(selection: string) {
+    if (selection.includes('zapp')) {
+      this.ship = new Ship(30, 6, 0.5);
+    }
+    document.querySelector('.ship.modal')?.remove();
   }
 
-  static handleChooseCaptain(selection: { id: string }) {
-    console.log('handle firing');
-    if (selection.id.includes('zapp')) {
+  static handleChooseCaptain(selection: string) {
+    if (selection.includes('zapp')) {
       this.player.playerCaptain = 'zapp';
     }
-    const chooseShip = new Modal('app', this.ship);
+    document.querySelector('.captain.modal')?.remove();
+    new Modal('app', this.ship);
   }
 }
 

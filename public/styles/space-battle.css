@@ -23,8 +23,8 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* width: 95vw;
-  height: 95vh; */
+  justify-content: center;
+  align-items: center;
   min-width: 1455px;
   max-width: 1543px;
   min-height: 985px;
@@ -109,7 +109,8 @@ body {
   transform: translate(440px, 150px) rotateZ(-5deg);
 }
 
-#captain-explosions, #omicron-explosions {
+#captain-explosions,
+#omicron-explosions {
   position: absolute;
   /* z-index: -1; */
 }
@@ -129,18 +130,17 @@ body {
 
 .explosion.small {
   width: 120px;
-  transform: translate(50px, 0px)
+  transform: translate(50px, 0px);
 }
 
 .explosion.medium {
   width: 220px;
-  transform: translate(150px, 10px)
-  
+  transform: translate(150px, 10px);
 }
 
 .explosion.large {
   width: 320px;
-  transform: translate(-40px, 20px)
+  transform: translate(-40px, 20px);
 }
 
 /* .small */

@@ -9,22 +9,19 @@ class Modal extends Component {
 
   handleSelection(e: MouseEvent) {
     if (e.target instanceof HTMLButtonElement) {
-      console.log('choose captain ', e.target.className);
       // document.getElementById('backdrop')!.classList.toggle('visible');
       if (e.target.parentElement!.className.includes('captain')) {
-        App.handleChooseCaptain(e.target);
-        document.querySelector('.captain.modal')!.classList.toggle('visible');
+        App.handleChooseCaptain(e.target.id);
         document.getElementById('backdrop')!.classList.toggle('visible');
       }
       if (e.target.parentElement!.className.includes('ship')) {
-        App.handleChooseShip(e.target);
+        App.handleChooseShip(e.target.id);
         document.getElementById('backdrop')!.classList.remove('visible');
       }
     }
   }
 
   render() {
-    console.log('rendering modal');
     document.getElementById('backdrop')!.classList.toggle('visible');
     const modal = this.createRootElement(
       'div',
@@ -50,9 +47,9 @@ class Modal extends Component {
             <img id="${this.content.characters[1].class}-img" src="images/${
       this.content.characters[1].image
     }" alt="${this.content.characters[1].name}" />
-            <button id="z${
+            <button id="${
               this.content.characters[1].class
-            }app-select" class="btn btn--success">${
+            }-select" class="btn btn--success">${
       this.content.characters[1].name
     }</button>
           </div>
