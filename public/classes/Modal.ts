@@ -1,9 +1,4 @@
-import Component from './component';
-import App from './app';
-import Captain from './captain';
-import Ship from './ship';
-
-export default class Modal extends Component {
+class Modal extends Component {
   content: Captain | Ship;
 
   constructor(renderHookId: string, content: Captain | Ship) {
@@ -12,23 +7,25 @@ export default class Modal extends Component {
     this.render();
   }
 
-  handleSelection(e: InputEvent) {
+  handleSelection(e: MouseEvent) {
     if (e.target instanceof HTMLButtonElement) {
       console.log('choose captain ', e.target.className);
-      document.getElementById('backdrop').classList.toggle('visible');
-      if (e.target.parentElement.className.includes('captain')) {
+      // document.getElementById('backdrop')!.classList.toggle('visible');
+      if (e.target.parentElement!.className.includes('captain')) {
         App.handleChooseCaptain(e.target);
+        document.querySelector('.captain.modal')!.classList.toggle('visible');
+        document.getElementById('backdrop')!.classList.toggle('visible');
       }
-      if (e.target.parentElement.className.includes('ship')) {
+      if (e.target.parentElement!.className.includes('ship')) {
         App.handleChooseShip(e.target);
+        document.getElementById('backdrop')!.classList.remove('visible');
       }
-      document.querySelector('.modal').classList.toggle('visible');
-      document.getElementById('backdrop').classList.remove('visible');
     }
   }
 
   render() {
-    document.getElementById('backdrop').classList.toggle('visible');
+    console.log('rendering modal');
+    document.getElementById('backdrop')!.classList.toggle('visible');
     const modal = this.createRootElement(
       'div',
       `${this.content.id} modal card visible`

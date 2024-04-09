@@ -1,11 +1,15 @@
-export default class Component {
+class Component {
   hookId: string;
 
   constructor(renderHookId: string) {
     this.hookId = renderHookId;
   }
 
-  createRootElement(tag: string, cssClasses: string, attributes?): HTMLElement {
+  createRootElement(
+    tag: string,
+    cssClasses: string,
+    attributes?: Array<{ name: string; value: string }>
+  ): HTMLElement {
     const rootElement: HTMLElement = document.createElement(tag);
     if (cssClasses) {
       rootElement.className = cssClasses;
@@ -15,7 +19,7 @@ export default class Component {
         rootElement.setAttribute(attr.name, attr.value);
       }
     }
-    document.getElementById(this.hookId).append(rootElement);
+    document.getElementById(this.hookId)!.append(rootElement);
     return rootElement;
   }
 }

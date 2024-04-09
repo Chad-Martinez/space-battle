@@ -1,6 +1,4 @@
-import { Character } from './types';
-
-export default class Ship {
+class Ship {
   hull: number;
   firepower: number;
   accuracy: number;

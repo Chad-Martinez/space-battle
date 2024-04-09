@@ -1,7 +1,4 @@
-import Component from './component';
-import { Character } from './types';
-
-export default class Captain extends Component {
+class Captain extends Component {
   id: string = 'captain';
   characters: Array<Character> = [
     {
