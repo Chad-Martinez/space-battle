@@ -3,8 +3,8 @@ class App extends Component {
   static player: Captain;
   static ship: Ship;
   static init() {
-    const captain = new Captain('app');
     const vessel = new Ship(20, 4, 0.7);
+    const captain = new Captain('game-area', vessel);
     const chooseCaptain = new Modal('app', captain);
     this.player = captain;
     this.ship = vessel;
@@ -16,7 +16,7 @@ class App extends Component {
       this.ship = new Ship(30, 6, 0.5);
     }
     document.querySelector('.ship.modal')?.remove();
-    new GameBoard('app');
+    new GameBoard('app', this.player);
   }
 
   static handleChooseCaptain(selection: string) {

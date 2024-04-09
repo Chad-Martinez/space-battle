@@ -16,6 +16,7 @@ class Captain extends Component {
     character: this.characters[0],
     ship: {},
   };
+  ship: Ship;
 
   set playerCaptain(captain: string) {
     if (captain == 'leela') {
@@ -31,7 +32,15 @@ class Captain extends Component {
   //   }
   // }
 
-  constructor(renderHookId: string) {
+  constructor(renderHookId: string, ship: Ship) {
     super(renderHookId);
+    this.ship = ship;
+  }
+
+  render() {
+    this.createRootElement('div', 'col', [{ name: 'id', value: 'captain' }]);
+    new Dialog('captain', 'captain');
+    this.ship.render();
+    new Controls('captain', 'captain');
   }
 }
