@@ -34,11 +34,4 @@ class Captain extends Component {
   constructor(renderHookId: string) {
     super(renderHookId);
   }
-
-  render() {
-    const captain = this.createRootElement('div', 'col', [
-      { name: 'id', value: 'captain' },
-    ]) as HTMLDivElement;
-    captain.innerHTML = `<h1>Hello from ${this.characters[0].name}</h1>`;
-  }
 }
