@@ -37,8 +37,15 @@ class Controls extends Component {
       } else {
         Omicron.fleet -= 1;
         if (Omicron.fleet <= 0) {
-          console.log('You won!');
-          // gameFinish('win');
+          const content: GameFinish = {
+            title: Modal.GAME_WON_TITLE,
+            image: {
+              path: 'images/zapp-salute.webp',
+              alt: 'Winner',
+            },
+            slogan: Modal.GAME_WON_SLOGAN,
+          };
+          new Modal('app', 'game-finish', content);
         } else {
           Dialog.speak('captain', Captain.CAPTAIN_DESTROY_DIALOG);
           const retreatBtn = document.getElementById(
@@ -62,7 +69,18 @@ class Controls extends Component {
     )! as HTMLImageElement;
     ship.classList.add('retreat');
     setTimeout(() => {
-      // gameFinish('retreat');
+      const app = document.querySelector('#app')! as HTMLDivElement;
+      app.innerHTML = '';
+
+      const content: GameFinish = {
+        title: Modal.GAME_RETREAT_TITLE,
+        image: {
+          path: 'images/zapp-fish-full.webp',
+          alt: 'The Wiley Fish',
+        },
+        slogan: Modal.GAME_RETREAT_SLOGAN,
+      };
+      new Modal('app', 'game-finish', content);
     }, 1500);
   }
 

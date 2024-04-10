@@ -50,10 +50,19 @@ class Omicron extends Component {
         App.player.player.ship,
         'captain'
       );
-      enemyHull <= 0
-        ? // ? gameFinish('lose')
-          console.log('You lose')
-        : Dialog.speak('omicron', Omicron.OMICRON_HIT_DIALOG);
+      if (enemyHull <= 0) {
+        const content: GameFinish = {
+          title: Modal.GAME_LOST_TITLE,
+          image: {
+            path: 'images/lrrr-doom.webp',
+            alt: 'Dooooom!',
+          },
+          slogan: '',
+        };
+        new Modal('app', 'game-finish', content);
+      } else {
+        Dialog.speak('omicron', Omicron.OMICRON_HIT_DIALOG);
+      }
     } else {
       Ship.fireLasers('omicron', 'miss');
       Dialog.speak('omicron', Omicron.OMICRON_MISS_DIALOG);
