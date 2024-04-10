@@ -41,7 +41,7 @@ class Modal extends Component {
       if (e.target.parentElement!.className.includes('game-finish')) {
         document.querySelector('.game-finish.modal')?.remove();
         document.getElementById('backdrop')!.classList.toggle('visible');
-        App.init();
+        location.reload();
       }
     }
   }
