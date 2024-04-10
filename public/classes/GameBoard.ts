@@ -13,5 +13,6 @@ class GameBoard extends Component {
       { name: 'id', value: 'game-area' },
     ]);
     this.player.render();
+    new Alien('game-area');
   }
 }

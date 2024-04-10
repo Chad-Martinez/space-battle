@@ -18,12 +18,23 @@ class Dialog extends Component {
     const dialog = this.createRootElement('div', 'box', [
       { name: 'id', value: `${this.content}-dialog` },
     ]);
-    dialog.innerHTML = `
+    if (this.content == 'captain') {
+      dialog.innerHTML = `
         <img id="${this.content}-img" src="images/leela.webp" alt="Leela" />
         <div>
           <div id="${this.content}-bubble" class="bubble grow left">
             This is such a travesty
           </div>
         </div>`;
+    } else {
+      dialog.innerHTML = `
+            <div>
+              <div id="omicron-bubble" class="bubble grow right">
+                This is such a travesty. Who is going to pay for this?
+              </div>
+            </div>
+            <img id="omicron-lrrrr" src="images/lrrrr.webp" alt="Lrrrr" />
+          `;
+    }
   }
 }
