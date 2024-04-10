@@ -1,6 +1,6 @@
 :root {
   --omicron-position: 'translate(0px, 0px)';
-  --captain-position: 'translate(0px, 0px)'
+  --captain-position: 'translate(0px, 0px)';
 }
 #captain-ship-img.retreat {
   animation: retreat 1s cubic-bezier(1, 0.06, 1, 0.9) forwards;
@@ -10,7 +10,7 @@
   from {
   }
   to {
-    transform: translate(2000px, -600px);
+    transform: translate(2500px, -600px);
   }
 }
 
@@ -24,7 +24,7 @@
   }
   to {
     opacity: 1;
-    transform: var(--omicron-position)
+    transform: var(--omicron-position);
   }
 }
 
@@ -52,7 +52,7 @@
   }
   to {
     opacity: 1;
-    transform: var(--captain-position)
+    transform: var(--captain-position);
   }
 }
 
@@ -71,7 +71,7 @@
 }
 
 .exploded {
-  animation: animate-explosions .5s ease-out backwards;
+  animation: animate-explosions 0.5s ease-out backwards;
 }
 
 @keyframes animate-explosions {
@@ -81,6 +81,6 @@
   }
   to {
     opacity: 1;
-    transform: scale(100%)
+    transform: scale(100%);
   }
 }

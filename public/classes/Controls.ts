@@ -56,14 +56,15 @@ class Controls extends Component {
     }
   };
 
-  retreatHandler = () => {
-    // const ship = captain.children[1].firstElementChild as HTMLImageElement;
-    // ship.classList.toggle('retreat');
-    // setTimeout(() => {
-    //   ship.classList.toggle('retreat');
-    //   gameFinish('retreat');
-    // }, 1500);
-  };
+  retreatHandler() {
+    const ship = document.getElementById(
+      'captain-ship-img'
+    )! as HTMLImageElement;
+    ship.classList.add('retreat');
+    setTimeout(() => {
+      // gameFinish('retreat');
+    }, 1500);
+  }
 
   render() {
     const controls = this.createRootElement('div', 'box');
