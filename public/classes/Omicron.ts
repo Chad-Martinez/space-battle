@@ -22,7 +22,6 @@ class Omicron extends Component {
 
   constructor(renderHookId: string) {
     super(renderHookId);
-    // this.render();
   }
   static generateOmicronShip() {
     const omicronShipCount = document.getElementById(
