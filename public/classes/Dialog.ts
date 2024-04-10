@@ -1,8 +1,10 @@
 class Dialog extends Component {
-  content: string;
-  constructor(renderHookId: string, character: string) {
+  content?: Character;
+  dialogType: string;
+  constructor(renderHookId: string, dialogType: string, character?: Character) {
     super(renderHookId);
     this.content = character;
+    this.dialogType = dialogType;
     this.render();
   }
 
@@ -16,24 +18,24 @@ class Dialog extends Component {
 
   render() {
     const dialog = this.createRootElement('div', 'box', [
-      { name: 'id', value: `${this.content}-dialog` },
+      { name: 'id', value: `${this.dialogType}-dialog` },
     ]);
-    if (this.content == 'captain') {
+    if (this.dialogType == 'captain') {
       dialog.innerHTML = `
-        <img id="${this.content}-img" src="images/leela.webp" alt="Leela" />
+        <img id="${this.dialogType}-img" src="images/${this.content?.image}" alt="${this.content?.name}" />
         <div>
-          <div id="${this.content}-bubble" class="bubble grow left">
+          <div id="${this.dialogType}-bubble" class="bubble grow left">
             This is such a travesty
           </div>
         </div>`;
     } else {
       dialog.innerHTML = `
             <div>
-              <div id="omicron-bubble" class="bubble grow right">
+              <div id="${this.dialogType}-bubble" class="bubble grow right">
                 This is such a travesty. Who is going to pay for this?
               </div>
             </div>
-            <img id="omicron-lrrrr" src="images/lrrrr.webp" alt="Lrrrr" />
+            <img id="${this.dialogType}-img" src="images/${this.content?.image}" alt="${this.content?.name}" />
           `;
     }
   }
