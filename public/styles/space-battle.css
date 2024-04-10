@@ -68,7 +68,7 @@ body {
 }
 
 #captain-img,
-#omicron-lrrrr {
+#omicron-img {
   height: 200px;
   object-fit: contain;
 }
@@ -77,10 +77,20 @@ body {
   opacity: 0;
 }
 
-#captain-ship-img {
-  height: 150px;
+#captain-ship img,
+#omicron-ship img {
   object-fit: contain;
   align-self: center;
+}
+
+img.planet-express {
+  width: 400px;
+  height: auto;
+}
+
+img.nimbus {
+  width: 450px;
+  height: auto;
 }
 
 #captain-ship-laser {
@@ -95,11 +105,9 @@ body {
   margin-left: auto;
 }
 
-#omicron-ship {
+img.omicron-ship {
   height: 175px;
-  object-fit: contain;
   margin-left: auto;
-  align-self: center;
 }
 
 #omicron-ship-laser {
@@ -109,7 +117,6 @@ body {
 #captain-explosions,
 #omicron-explosions {
   position: absolute;
-  /* z-index: -1; */
 }
 
 #omicron-explosions {
@@ -139,8 +146,6 @@ body {
   width: 320px;
   transform: translate(-40px, 20px);
 }
-
-/* .small */
 
 .controls {
   display: flex;
@@ -225,17 +230,6 @@ progress[value]::-moz-progress-bar {
   display: flex;
   flex-direction: column;
 }
-/* 
-#bonus-life {
-  font-weight: bold;
-  color: white;
-  background: #ff0062;
-  border: 1px solid #ff0062;
-  padding: 0.15rem 0.5rem;
-  border-radius: 10px;
-  text-align: center;
-  margin: 0 0.5rem;
-} */
 
 .stars-backdrop {
   z-index: -2;
