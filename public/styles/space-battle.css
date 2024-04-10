@@ -24,11 +24,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  min-width: 1455px;
-  max-width: 1543px;
-  min-height: 985px;
-  max-height: 1223px;
+  width: 90vw;
+  height: 90vh;
   padding: 20px;
 }
 

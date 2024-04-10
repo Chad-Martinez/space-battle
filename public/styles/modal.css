@@ -32,6 +32,7 @@ button:focus {
   z-index: 100;
   max-width: 1070px;
   background-color: var(--bg-red);
+  align-self: center;
 }
 
 .captain {
