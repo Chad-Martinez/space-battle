@@ -23,12 +23,9 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* width: 95vw;
-  height: 95vh; */
-  min-width: 1455px;
-  max-width: 1543px;
-  min-height: 985px;
-  max-height: 1223px;
+  justify-content: center;
+  width: 90vw;
+  height: 90vh;
   padding: 20px;
 }
 
@@ -71,7 +68,7 @@ body {
 }
 
 #captain-img,
-#omicron-lrrrr {
+#omicron-img {
   height: 200px;
   object-fit: contain;
 }
@@ -80,14 +77,28 @@ body {
   opacity: 0;
 }
 
-#captain-ship-img {
-  height: 150px;
+#captain-ship img,
+#omicron-ship img {
   object-fit: contain;
   align-self: center;
 }
 
-#captain-ship-laser {
-  transform: translate(130px, 146px) rotateZ(3deg);
+img.planet-express {
+  width: 400px;
+  height: auto;
+}
+
+img.nimbus {
+  width: 450px;
+  height: auto;
+}
+
+.nimbus + .laser {
+  transform: translate(200px, -30px) rotateZ(3deg);
+}
+
+.planet-express + .laser {
+  transform: translate(170px, 0px) rotateZ(4deg);
 }
 
 #omicron-bubble {
@@ -98,28 +109,34 @@ body {
   margin-left: auto;
 }
 
-#omicron-ship {
-  height: 175px;
-  object-fit: contain;
-  margin-left: auto;
-  align-self: center;
+#omicron-ship.box {
+  justify-content: flex-end;
+}
+
+img.omicron-ship {
+  width: 322px;
+  height: auto;
 }
 
 #omicron-ship-laser {
-  transform: translate(440px, 150px) rotateZ(-5deg);
+  transform: translate(-80px, 0px) rotateZ(-5deg);
 }
 
-#captain-explosions, #omicron-explosions {
+#captain-explosions,
+#omicron-explosions {
   position: absolute;
-  /* z-index: -1; */
+}
+
+img.planet-express ~ #captain-explosions {
+  transform: translate(35px, 100px);
+}
+
+img.nimbus ~ #captain-explosions {
+  transform: translate(35px, 50px);
 }
 
 #omicron-explosions {
-  transform: translate(400px, 0px);
-}
-
-.explosions {
-  transform: translate(-500px, 300px);
+  transform: translate(-320px, 70px);
 }
 
 .explosion {
@@ -129,21 +146,18 @@ body {
 
 .explosion.small {
   width: 120px;
-  transform: translate(50px, 0px)
+  transform: translate(50px, 0px);
 }
 
 .explosion.medium {
   width: 220px;
-  transform: translate(150px, 10px)
-  
+  transform: translate(150px, 10px);
 }
 
 .explosion.large {
   width: 320px;
-  transform: translate(-40px, 20px)
+  transform: translate(-40px, 20px);
 }
-
-/* .small */
 
 .controls {
   display: flex;
@@ -228,17 +242,6 @@ progress[value]::-moz-progress-bar {
   display: flex;
   flex-direction: column;
 }
-/* 
-#bonus-life {
-  font-weight: bold;
-  color: white;
-  background: #ff0062;
-  border: 1px solid #ff0062;
-  padding: 0.15rem 0.5rem;
-  border-radius: 10px;
-  text-align: center;
-  margin: 0 0.5rem;
-} */
 
 .stars-backdrop {
   z-index: -2;
