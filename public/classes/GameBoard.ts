@@ -1,8 +1,6 @@
 class GameBoard extends Component {
-  player: Captain;
-  constructor(renderHookId: string, player: Captain) {
+  constructor(renderHookId: string) {
     super(renderHookId);
-    this.player = player;
     this.render();
   }
 
@@ -12,7 +10,7 @@ class GameBoard extends Component {
     const gameArea = this.createRootElement('div', '', [
       { name: 'id', value: 'game-area' },
     ]);
-    this.player.render();
-    new Alien('game-area');
+    new Captain('game-area');
+    new Omicron('game-area');
   }
 }
