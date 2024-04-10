@@ -51,6 +51,8 @@ class Omicron extends Component {
         'captain'
       );
       if (enemyHull <= 0) {
+        const app = document.querySelector('#app')! as HTMLDivElement;
+        app.innerHTML = '';
         const content: GameFinish = {
           title: Modal.GAME_LOST_TITLE,
           image: {
