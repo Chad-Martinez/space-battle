@@ -10,7 +10,7 @@
   from {
   }
   to {
-    transform: translate(2500px, -600px);
+    transform: translate(3000px, -600px);
   }
 }
 
@@ -38,7 +38,7 @@
   }
   to {
     opacity: 1;
-    transform: translate(1123px, 350px);
+    transform: translate(2500px, 450px);
   }
 }
 
@@ -66,7 +66,7 @@
   }
   to {
     opacity: 1;
-    transform: translate(-560px, -125px);
+    transform: translate(-1560px, -125px);
   }
 }
 

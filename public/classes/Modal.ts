@@ -61,7 +61,7 @@ class Modal extends Component {
         </div>
         <img id="game-finish-img" src="${gameFinish.image.path}" alt="${gameFinish.image.alt}" />
         <div class="game-finish__slogan">
-          "${gameFinish.slogan}"
+          ${gameFinish.slogan}
         </div>
         <button id="start-select" class="btn btn--success">START</button>
       </div>
