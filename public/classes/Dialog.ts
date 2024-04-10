@@ -31,6 +31,10 @@ class Dialog extends Component {
             This is such a travesty
           </div>
         </div>`;
+      if (this.content?.name == 'Zapp') {
+        const image = dialog.querySelector('img')! as HTMLImageElement;
+        image.style.transform = 'rotateY(180deg)';
+      }
     } else {
       dialog.innerHTML = `
             <div>

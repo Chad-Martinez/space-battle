@@ -92,6 +92,12 @@ class Modal extends Component {
           </div>
         </div>
       </div>`;
+      if (characters[1].name == 'Nimbus') {
+        const image = modal.querySelector(
+          `#${characters[1].class}-img`
+        )! as HTMLImageElement;
+        image.style.transform = 'rotateY(180deg)';
+      }
     }
 
     modal.addEventListener('click', this.handleSelection);
