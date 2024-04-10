@@ -10,7 +10,9 @@ class GameBoard extends Component {
     const gameArea = this.createRootElement('div', '', [
       { name: 'id', value: 'game-area' },
     ]);
+
     new Captain('game-area');
-    new Omicron('game-area');
+    App.omicron.render();
+    // new Omicron('game-area');
   }
 }
