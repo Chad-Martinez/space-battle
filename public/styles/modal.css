@@ -2,12 +2,6 @@ button:focus {
   outline: none;
 }
 
-label {
-  font-weight: bold;
-  margin: 0.5rem 0;
-  color: #464646;
-}
-
 .btn {
   font: inherit;
   padding: 0.5rem 1.5rem;
@@ -18,6 +12,8 @@ label {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.26);
   cursor: pointer;
   margin: 0 0.5rem;
+  max-width: 200px;
+  text-transform: uppercase;
 }
 
 .btn:hover,
@@ -33,12 +29,10 @@ label {
 }
 
 .modal {
-  position: fixed;
   z-index: 100;
-  width: 80%;
-  top: 20vh;
-  left: 10%;
+  max-width: 1070px;
   background-color: var(--bg-red);
+  align-self: center;
 }
 
 .captain {
@@ -143,7 +137,7 @@ label {
 }
 
 #planet-express-img {
-  width: 500px;
+  width: 400px;
   height: auto;
   margin: auto;
 }
@@ -155,7 +149,7 @@ label {
 
 .ship__item button {
   margin-top: 20px;
-  width: 160px;
+  width: 190px;
 }
 
 .game-finish__content {
@@ -182,21 +176,5 @@ label {
   }
   to {
     transform: translateY(0);
-  }
-}
-
-@media (min-width: 768px) {
-  #captain-modal {
-    width: 45rem;
-    left: calc(50% - 22.5rem);
-  }
-
-  #ship-modal {
-    width: 65.7rem;
-    left: calc(50% - 32.5rem);
-  }
-  #game-finish-modal {
-    width: 65.7rem;
-    left: calc(50% - 32.5rem);
   }
 }
