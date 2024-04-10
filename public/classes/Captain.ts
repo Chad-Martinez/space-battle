@@ -1,6 +1,9 @@
 class Captain extends Component {
   captain: Character;
   ship: Vessel;
+  CAPTAIN_HIT_DIALOG: string = 'Yes! Direct Hit!';
+  CAPTAIN_MISS_DIALOG: string = 'Rats! We missed!';
+  CAPTAIN_DESTROY_DIALOG: string = 'Another one bites the dust!';
 
   constructor(renderHookId: string) {
     super(renderHookId);

@@ -14,6 +14,10 @@ class Omicron extends Component {
       accuracy: (Math.random() * (8 - 6 + 1) + 6) / 10,
     },
   };
+  OMICRON_HIT_DIALOG: string = 'Hit!! Soon you will meet your fate!';
+  OMICRON_MISS_DIALOG: string = 'Miss? Unacceptable! Recalibrate lasers!';
+  OMICRON_DESTROY_DIALOG: string = 'MUAH AHAH AH! Doooom!';
+
   constructor(renderHookId: string) {
     super(renderHookId);
     this.render();
