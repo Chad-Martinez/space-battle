@@ -22,7 +22,6 @@ class Modal extends Component {
 
   handleSelection(e: MouseEvent) {
     if (e.target instanceof HTMLButtonElement) {
-      console.log(e.target.parentElement!.className);
       if (e.target.parentElement!.className.includes('captain')) {
         if (e.target.id.includes('zapp')) {
           App.player.playerCaptain = 'zapp';
