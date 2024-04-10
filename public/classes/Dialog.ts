@@ -8,11 +8,14 @@ class Dialog extends Component {
     this.render();
   }
 
-  speak = (element: HTMLElement, dialog: string): void => {
-    element.textContent = dialog;
-    element.style.opacity = '1';
+  static speak = (dialogType: string, dialog: string): void => {
+    const dialogEl = document.getElementById(
+      `${dialogType}-bubble`
+    )! as HTMLDivElement;
+    dialogEl.textContent = dialog;
+    dialogEl.style.opacity = '1';
     setTimeout(() => {
-      element.style.opacity = '0';
+      dialogEl.style.opacity = '0';
     }, 2800);
   };
 

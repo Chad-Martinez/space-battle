@@ -1,42 +1,59 @@
 class Controls extends Component {
-  content: string;
-  constructor(renderHookId: string, character: string) {
+  playerShip: Vessel = App.player.player.ship;
+
+  constructor(renderHookId: string) {
     super(renderHookId);
-    this.content = character;
     this.render();
   }
 
+  static subtractDamage = (
+    offense: Vessel,
+    defense: Vessel,
+    shipType: string
+  ): number => {
+    const defenseHull = document.getElementById(
+      `${shipType}-hull`
+    )! as HTMLProgressElement;
+    defense.stats.hull -= offense.stats.firepower;
+    defenseHull.value = defense.stats.hull;
+    return defense.stats.hull;
+  };
+
+  static isHit = (accuracy: number): boolean =>
+    accuracy > Math.random() ? true : false;
+
   attack = (): void => {
-    // if (omicronFleet.length > 0) {
-    //   if (isHit(captainShip.accuracy)) {
-    //     fireLasers(captain, 'hit');
-    //     subtractDamage(
-    //       captainShip,
-    //       omicronFleet[omicronFleet.length - 1],
-    //       omicronHull
-    //     );
-    //     speak(captainBubble, CAPTAIN_HIT_DIALOG);
-    //     // console.log('SHIP POSITION ', ship.getBoundingClientRect());
-    //     // ship.classList.add('retreat');
-    //   } else {
-    //     fireLasers(captain, 'miss');
-    //     speak(captainBubble, CAPTAIN_MISS_DIALOG);
-    //   }
-    //   if (omicronFleet[omicronFleet.length - 1].hull > 0) {
-    //     setTimeout(omicronAttack, 500);
-    //   } else {
-    //     omicronFleet.pop();
-    //     if (omicronFleet.length <= 0) {
-    //       gameFinish('win');
-    //     } else {
-    //       speak(captainBubble, CAPTAIN_DESTROY_DIALOG);
-    //       retreatBtn.classList.remove('push--disabled');
-    //       retreatBtn.classList.add('push--flat');
-    //       omicronShipCount.textContent = omicronFleet.length.toString();
-    //       setOmicronHull(omicronFleet[omicronFleet.length - 1].hull);
-    //     }
-    //   }
-    // }
+    if (Omicron.fleet > 0) {
+      if (Controls.isHit(this.playerShip.stats.accuracy)) {
+        Ship.fireLasers('captain', 'hit');
+        Controls.subtractDamage(this.playerShip, Omicron.ship, 'omicron');
+        Dialog.speak('captain', Captain.CAPTAIN_HIT_DIALOG);
+      } else {
+        Ship.fireLasers('captain', 'miss');
+        Dialog.speak('captain', Captain.CAPTAIN_MISS_DIALOG);
+      }
+      if (Omicron.ship.stats.hull > 0) {
+        setTimeout(Omicron.attack, 500);
+      } else {
+        Omicron.fleet -= 1;
+        if (Omicron.fleet <= 0) {
+          console.log('You won!');
+          // gameFinish('win');
+        } else {
+          Dialog.speak('captain', Captain.CAPTAIN_DESTROY_DIALOG);
+          const retreatBtn = document.getElementById(
+            'retreat-btn'
+          )! as HTMLButtonElement;
+          retreatBtn.classList.remove('push--disabled');
+          retreatBtn.classList.add('push--flat');
+          const omicronShipCount = document.getElementById(
+            'ship-count'
+          )! as HTMLDivElement;
+          omicronShipCount.textContent = Omicron.fleet.toString();
+          Omicron.generateOmicronShip();
+        }
+      }
+    }
   };
 
   retreatHandler = () => {
