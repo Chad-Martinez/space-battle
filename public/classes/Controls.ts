@@ -37,6 +37,8 @@ class Controls extends Component {
       } else {
         Omicron.fleet -= 1;
         if (Omicron.fleet <= 0) {
+          const app = document.querySelector('#app')! as HTMLDivElement;
+          app.innerHTML = '';
           const content: GameFinish = {
             title: Modal.GAME_WON_TITLE,
             image: {
