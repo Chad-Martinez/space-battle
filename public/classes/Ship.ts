@@ -1,46 +1,35 @@
-class Ship {
-  hull: number;
-  firepower: number;
-  accuracy: number;
+class Ship extends Component {
+  ship: Vessel;
+  shipType: string;
 
-  id: string = 'ship';
-  characters: Array<Character> = [
-    {
-      name: 'Planet Express',
-      class: 'planet-express',
-      image: 'planet-express.webp',
-    },
-    {
-      name: 'Nimbus',
-      class: 'nimbus',
-      image: 'nimbus.webp',
-    },
-  ];
-
-  constructor(hull: number, firepower: number, accuracy: number) {
-    this.hull = hull;
-    this.firepower = firepower;
-    this.accuracy = accuracy;
+  constructor(renderHookId: string, shipType: string, ship: Vessel) {
+    super(renderHookId);
+    this.ship = ship;
+    console.log('SHIP ', ship);
+    this.shipType = shipType;
+    this.render();
   }
 
   render() {
-    const captain = document.getElementById('captain');
-    const ship = document.createElement('div');
-    ship.setAttribute('id', 'captain-ship');
-    ship.className = 'box';
+    const ship = this.createRootElement('div', 'box', [
+      { name: 'id', value: `${this.shipType}-ship` },
+    ]);
     ship.innerHTML = `
           <img
-            id="captain-ship-img"
-            src="images/planet-express.webp"
+            id="${this.shipType}-ship-img"
+            class="${this.ship.class}"
+            src="images/${this.ship.image}"
             alt="Planet Express"
           />
           <img
-            id="captain-ship-laser"
+            id="${this.shipType}-ship-laser"
             class="laser"
-            src="images/laser-left.webp"
+            src="images/laser-${
+              this.shipType == 'captain' ? 'left' : 'right'
+            }.webp"
             alt="Captain Laser"
           />
-          <div id="captain-explosions">
+          <div id="${this.shipType}-explosions">
             <img
               class="explosion small"
               src="images/explosion.webp"
@@ -58,6 +47,5 @@ class Ship {
             />
           </div>
     `;
-    captain?.appendChild(ship);
   }
 }
