@@ -97,7 +97,7 @@ class Controls extends Component {
               <progress id="captain-hull" max="20" value="20">100%</progress>
             </div>
             <div id="captain-hull-title" class="progress__title">
-              Planet Express Hull
+              ${App.player.player.ship.name} Hull
             </div>
           </div>
           <div class="button__container">
