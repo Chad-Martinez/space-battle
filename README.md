@@ -1,8 +1,6 @@
-# SPACE BATTLE v2.2
+# SPACE BATTLE v3
 
 Space Battle is a simple javascript game built with TypeScript, HTML, and CSS/SASS as part of a lab during my time at Per Scholas. It pays homage to Season 2 Episode 3 (When Aliens Attack) of Futurama.
-
-Designed for a 1080 screen size.
 
 Episode Storyline:
 The Omicrons threaten to destroy the earth if they can't see the last episode of a lost 20th Century television series "Single Female Lawyer" starring an unmarried human female, who wears very short miniskirts, struggling to succeed in a human man's world. Because the last episode was destroyed by someone spilling beer on the transmitter (Fry), the crew from Planet Express must deliver their version of "Single Female Lawyer."
