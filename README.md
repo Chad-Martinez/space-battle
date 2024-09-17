@@ -28,8 +28,8 @@ Lrrr: Ruler of the planet Omicron Persei 8. He has been known, along with most o
 
 Omicronian Fleet consists of 5 vessels with varying hull shield, firepower and accurarcy.
 
-
-
+# Live Deployment
+https://space-battle-game.web.app
 
 Good luck Captain!
 
